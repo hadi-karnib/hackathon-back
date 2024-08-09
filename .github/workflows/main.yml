@@ -11,5 +11,5 @@ jobs:
       uses: peter-evans/repository-dispatch@v1
       with:
         token: ${{ secrets.PAT }}
-        repository: hadi-karnib/hackathon-fullstack
+        repository: hadi-karnib/hackathon-full
         event-type: update-submodules-event
