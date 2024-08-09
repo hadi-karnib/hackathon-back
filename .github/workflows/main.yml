@@ -1,6 +1,7 @@
 name: Notify Main Project
 
-on: push
+on:
+  push
 
 jobs:
   notify-main-project:
