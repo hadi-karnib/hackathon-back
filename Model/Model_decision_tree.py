@@ -30,7 +30,7 @@ def mlFlowVersioning(class_tree,model_name):
 
 def train_model_partition1():
     # load dataset
-    df = pd.read_csv('../../data/first_data.csv') # app, category, size, type, price, content rating, genre last updated, android version
+    df = pd.read_csv('../data/first_data.csv') # app, category, size, type, price, content rating, genre last updated, android version
     label_encoder = LabelEncoder()
     df['Category'] = label_encoder.fit_transform(df['Category'])
     df['Content_Rating'] = label_encoder.fit_transform(df['Content_Rating'])
@@ -67,7 +67,7 @@ modell1_partition1=train_model_partition1()
 
 def train_model_partition2():
     # load dataset
-    df = pd.read_csv('../../data/second_data.csv') # app, category, size, type, price, content rating, genre last updated, android version
+    df = pd.read_csv('../data/second_data.csv') # app, category, size, type, price, content rating, genre last updated, android version
     label_encoder = LabelEncoder()
     df['Category'] = label_encoder.fit_transform(df['Category'])
     df['Content_Rating'] = label_encoder.fit_transform(df['Content_Rating'])
@@ -105,7 +105,7 @@ def train_model_partition2():
 
 def train_model_partition3():
     # load dataset
-    df = pd.read_csv('../../data/finaldataset.csv') # app, category, size, type, price, content rating, genre last updated, android version
+    df = pd.read_csv('../data/finaldataset.csv') # app, category, size, type, price, content rating, genre last updated, android version
     label_encoder = LabelEncoder()
     df['Category'] = label_encoder.fit_transform(df['Category'])
     df['Content_Rating'] = label_encoder.fit_transform(df['Content_Rating'])
