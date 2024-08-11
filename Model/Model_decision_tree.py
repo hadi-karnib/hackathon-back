@@ -142,7 +142,7 @@ def train_model_partition3():
 
 
 
-#modell1_partition3=train_model_partition3()
+modell1_partition3=train_model_partition3()
 
 
 def predict_rate(model, user_input_json):
