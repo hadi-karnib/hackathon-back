@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import json
 import mlflow
@@ -10,6 +11,21 @@ from Model_decision_tree import predict_rate as predict_rate_decision_tree
 from Model2 import predict_rate as predict_model2
 
 app = FastAPI()
+
+# Add CORS middleware
+origins = [
+    "http://localhost",  # If your frontend is running on localhost
+    "http://localhost:3000",  # If your React app runs on port 3000
+    "http://your-frontend-domain.com",  # Add your frontend domain here
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all HTTP methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allow all headers
+)
 
 def get_latest_version(model_dir: str) -> str:
     try:

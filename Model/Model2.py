@@ -150,7 +150,7 @@ def train_model_partition3():
     mlFlowVersioning(model,"model2-partition3")
     return model
 
-modell2_partition3=train_model_partition3()
+#modell2_partition3=train_model_partition3()
 
 def predict_rate(model, user_input_json):
     # Load the JSON file into a DataFrame
