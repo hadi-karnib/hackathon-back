@@ -112,10 +112,10 @@ def train_model_partition3():
 
 def predict_rate(model, user_input_json):
     # Load the JSON file into a DataFrame
-    with open(user_input_json, 'r') as f:
-        data = [json.load(f)]
-    user_input = pd.DataFrame(data)
-
+    #with open(user_input_json, 'r') as f:
+    #    data = [json.load(f)]
+    user_input = pd.read_json(user_input_json)
+    
     label_encoder = LabelEncoder()
     user_input.drop(['App', 'Last_Updated'], axis=1) 
     user_input['Category'] = label_encoder.fit_transform(user_input['Category'])
@@ -158,9 +158,9 @@ def predict_rate(model, user_input_json):
         "Installs_category": result,
         "Installs": installs
     }
-    file_name = 'data.json'
+    #file_name = 'data.json'
     
     # Save the data to a JSON file
-    with open(file_name, 'w') as json_file:
-        json.dump(data, json_file, indent=4)
-    return file_name
+    #with open(file_name, 'w') as json_file:
+    #    json.dump(data, json_file, indent=4)
+    return data
