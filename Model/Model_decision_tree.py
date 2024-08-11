@@ -63,7 +63,7 @@ def train_model_partition1():
     mlFlowVersioning(class_tree,"model1-partition1")
     return class_tree
 
-modell1_partition1=train_model_partition1()
+#modell1_partition1=train_model_partition1()
 
 def train_model_partition2():
     # load dataset
@@ -149,7 +149,7 @@ def predict_rate(model, user_input_json):
     # Load the JSON file into a DataFrame
     #with open(user_input_json, 'r') as f:
     #    data = [json.load(f)]
-    user_input = pd.read_json(user_input_json)
+    user_input = pd.DataFrame([user_input_json])
 
     label_encoder = LabelEncoder()
     user_input.drop(['App', 'Last_Updated'], axis=1) 
