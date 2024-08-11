@@ -7,12 +7,21 @@ import numpy as np  # for array operations
 import pandas as pd  # for working with DataFrames
 import matplotlib.pyplot as plt  # for data visualization
 from sklearn import tree
-import json
+
 from sklearn.preprocessing import LabelEncoder
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn import tree
+from sklearn.metrics import mean_squared_error
+import numpy as np
+import mlflow
+import mlflow.sklearn
+
 
 def train_model_partition1():
     # load dataset
-    df = pd.read_csv('data/first_data.csv') # app, category, size, type, price, content rating, genre last updated, android version
+    df = pd.read_csv('../data/first_data.csv') # app, category, size, type, price, content rating, genre last updated, android version
     label_encoder = LabelEncoder()
     df['Category'] = label_encoder.fit_transform(df['Category'])
     df['Content_Rating'] = label_encoder.fit_transform(df['Content_Rating'])
@@ -46,7 +55,7 @@ def train_model_partition1():
 
 def train_model_partition2():
     # load dataset
-    df = pd.read_csv('data/second_data.csv') # app, category, size, type, price, content rating, genre last updated, android version
+    df = pd.read_csv('../data/second_data.csv') # app, category, size, type, price, content rating, genre last updated, android version
     label_encoder = LabelEncoder()
     df['Category'] = label_encoder.fit_transform(df['Category'])
     df['Content_Rating'] = label_encoder.fit_transform(df['Content_Rating'])
@@ -78,9 +87,12 @@ def train_model_partition2():
     return class_tree
 
 
+import mlflow
+import mlflow.sklearn
+
 def train_model_partition3():
     # load dataset
-    df = pd.read_csv('data/finaldataset.csv') # app, category, size, type, price, content rating, genre last updated, android version
+    df = pd.read_csv('../data/finaldataset.csv') # app, category, size, type, price, content rating, genre last updated, android version
     label_encoder = LabelEncoder()
     df['Category'] = label_encoder.fit_transform(df['Category'])
     df['Content_Rating'] = label_encoder.fit_transform(df['Content_Rating'])
@@ -88,6 +100,7 @@ def train_model_partition3():
     df['Type'] = label_encoder.fit_transform(df['Type'])
     df['Android_Ver'] = label_encoder.fit_transform(df['Android_Ver'])
     df['Installs_category'] = label_encoder.fit_transform(df['Installs_category'])
+    
     # choose features and label
     x = df.drop(['Installs_category', 'App', 'Last_Updated', 'Rating', 'Mean_App_Sentiment', 'Reviews'], axis=1)  # Features
     y = df['Installs_category']  # Target
@@ -98,7 +111,7 @@ def train_model_partition3():
     # Splitting the dataset into testing and validation sets (50/50)
     x_test, x_validate, y_test, y_validate = train_test_split(x_other, y_other, test_size=0.5, random_state=28)
 
-    class_tree = tree.DecisionTreeClassifier(criterion= 'gini', max_depth= 10, min_samples_leaf= 2, min_samples_split= 5)
+    class_tree = tree.DecisionTreeClassifier(criterion='gini', max_depth=10, min_samples_leaf=2, min_samples_split=5)
     class_tree.fit(x_train, y_train)
 
     y_pred = class_tree.predict(x_test)
@@ -109,8 +122,22 @@ def train_model_partition3():
     rmse = float(format(np.sqrt(mean_squared_error(y_test, y_pred)), '.3f'))
     print("\nRMSE:\n", rmse)
 
+    # Start an MLflow run
+    mlFlowVersioning(class_tree,"model1-partition3")
+
     return class_tree
 
+def mlFlowVersioning(class_tree,model_name):
+    with mlflow.start_run() as run:
+        # Log the model
+        mlflow.sklearn.log_model(class_tree, "model1")
+        
+        # Register the model
+        model_uri = f"runs:/{run.info.run_id}/model1"
+        mlflow.register_model(model_uri, model_name)
+
+modell1_partition3=train_model_partition3()
+#modell1_partition2=train_model_partition2()
 
 def predict_rate(model, user_input_json):
     # Load the JSON file into a DataFrame
