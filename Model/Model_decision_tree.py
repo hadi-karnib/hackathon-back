@@ -19,9 +19,18 @@ import mlflow
 import mlflow.sklearn
 
 
+def mlFlowVersioning(class_tree,model_name):
+    with mlflow.start_run() as run:
+        # Log the model
+        mlflow.sklearn.log_model(class_tree, "model1")
+        
+        # Register the model
+        model_uri = f"runs:/{run.info.run_id}/model1"
+        mlflow.register_model(model_uri, model_name)
+
 def train_model_partition1():
     # load dataset
-    df = pd.read_csv('../data/first_data.csv') # app, category, size, type, price, content rating, genre last updated, android version
+    df = pd.read_csv('../../data/first_data.csv') # app, category, size, type, price, content rating, genre last updated, android version
     label_encoder = LabelEncoder()
     df['Category'] = label_encoder.fit_transform(df['Category'])
     df['Content_Rating'] = label_encoder.fit_transform(df['Content_Rating'])
@@ -50,12 +59,15 @@ def train_model_partition1():
     rmse = float(format(np.sqrt(mean_squared_error(y_test, y_pred)), '.3f'))
     print("\nRMSE:\n", rmse)
 
+    # Start an MLflow run
+    mlFlowVersioning(class_tree,"model1-partition1")
     return class_tree
 
+modell1_partition1=train_model_partition1()
 
 def train_model_partition2():
     # load dataset
-    df = pd.read_csv('../data/second_data.csv') # app, category, size, type, price, content rating, genre last updated, android version
+    df = pd.read_csv('../../data/second_data.csv') # app, category, size, type, price, content rating, genre last updated, android version
     label_encoder = LabelEncoder()
     df['Category'] = label_encoder.fit_transform(df['Category'])
     df['Content_Rating'] = label_encoder.fit_transform(df['Content_Rating'])
@@ -83,16 +95,17 @@ def train_model_partition2():
 
     rmse = float(format(np.sqrt(mean_squared_error(y_test, y_pred)), '.3f'))
     print("\nRMSE:\n", rmse)
+    # Start an MLflow run
+    mlFlowVersioning(class_tree,"model1-partition2")
 
     return class_tree
 
+modell1_partition2=train_model_partition2()
 
-import mlflow
-import mlflow.sklearn
 
 def train_model_partition3():
     # load dataset
-    df = pd.read_csv('../data/finaldataset.csv') # app, category, size, type, price, content rating, genre last updated, android version
+    df = pd.read_csv('../../data/finaldataset.csv') # app, category, size, type, price, content rating, genre last updated, android version
     label_encoder = LabelEncoder()
     df['Category'] = label_encoder.fit_transform(df['Category'])
     df['Content_Rating'] = label_encoder.fit_transform(df['Content_Rating'])
@@ -127,17 +140,10 @@ def train_model_partition3():
 
     return class_tree
 
-def mlFlowVersioning(class_tree,model_name):
-    with mlflow.start_run() as run:
-        # Log the model
-        mlflow.sklearn.log_model(class_tree, "model1")
-        
-        # Register the model
-        model_uri = f"runs:/{run.info.run_id}/model1"
-        mlflow.register_model(model_uri, model_name)
+
 
 modell1_partition3=train_model_partition3()
-#modell1_partition2=train_model_partition2()
+
 
 def predict_rate(model, user_input_json):
     # Load the JSON file into a DataFrame
