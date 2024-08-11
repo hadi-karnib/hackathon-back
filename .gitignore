@@ -154,6 +154,3 @@ cython_debug/
 .Trashes
 ehthumbs.db
 Thumbs.db
-Model/mlruns/models/model1-partition1/
-Model/mlruns/models/model1-partition3/
-Model/mlruns/models/model2-partition3/
