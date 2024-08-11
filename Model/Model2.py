@@ -12,7 +12,9 @@ from sklearn.preprocessing import LabelEncoder
 import numpy as np
 import mlflow
 import mlflow.sklearn
-
+mlflow.set_tracking_uri("mlruns")
+# import os
+# mlflow.set_tracking_uri(os.path.join(os.path.dirname(__file__), "mlruns"))
 
 def mlFlowVersioning(model,model_name):
     with mlflow.start_run() as run:

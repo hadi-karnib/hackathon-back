@@ -18,8 +18,9 @@ import numpy as np
 import mlflow
 import mlflow.sklearn
 
+mlflow.set_tracking_uri("mlruns")
 
-def mlFlowVersioning(class_tree,model_name):
+def mlFlowVersioning(class_tree, model_name):
     with mlflow.start_run() as run:
         # Log the model
         mlflow.sklearn.log_model(class_tree, "model1")
