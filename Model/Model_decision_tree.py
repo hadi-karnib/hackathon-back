@@ -48,7 +48,7 @@ def train_model_partition1():
     # Splitting the dataset into testing and validation sets (50/50)
     x_test, x_validate, y_test, y_validate = train_test_split(x_other, y_other, test_size=0.5, random_state=28)
 
-    class_tree = tree.DecisionTreeClassifier(criterion= 'entropy', max_depth= 5, min_samples_leaf= 2, min_samples_split= 2)
+    class_tree = tree.DecisionTreeClassifier(criterion= 'entropy', max_depth= 8, min_samples_leaf= 2, min_samples_split= 2)
     class_tree.fit(x_train, y_train)
 
     y_pred = class_tree.predict(x_test)
@@ -100,7 +100,7 @@ def train_model_partition2():
 
     return class_tree
 
-modell1_partition2=train_model_partition2()
+#modell1_partition2=train_model_partition2()
 
 
 def train_model_partition3():
@@ -142,7 +142,7 @@ def train_model_partition3():
 
 
 
-modell1_partition3=train_model_partition3()
+#modell1_partition3=train_model_partition3()
 
 
 def predict_rate(model, user_input_json):
