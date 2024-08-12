@@ -7,7 +7,7 @@ import mlflow.sklearn
 import os
 
 # Import your prediction functions
-from Model_decision_tree import predict_rate as predict_rate_decision_tree
+from Model1 import predict_rate as predict_rate_decision_tree
 from Model2 import predict_rate as predict_model2
 
 app = FastAPI()

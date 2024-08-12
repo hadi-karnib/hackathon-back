@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/JPC/Desktop/project/hackathon-back/Model/mlruns/0/32a54ea3cab045c79aced8cc06170f7e/artifacts
+end_time: 1723452565515
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 32a54ea3cab045c79aced8cc06170f7e
+run_name: salty-moose-204
+run_uuid: 32a54ea3cab045c79aced8cc06170f7e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1723452562049
+status: 3
+tags: []
+user_id: JPC

@@ -1,6 +1,7 @@
 # Importing the libraries
-from sklearn.ensemble import RandomForestRegressor  # for building the model
-# for calculating the cost function
+from sklearn.preprocessing import LabelEncoder
+from sklearn.tree import DecisionTreeClassifier
+from sklearn import tree
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split  # for splitting the data
 import numpy as np  # for array operations
@@ -30,6 +31,7 @@ def train_model_partition1():
     # load dataset
     df = pd.read_csv('../data/first_data.csv') # App,Category,Installs_category,Rating,Mean_App_Sentiment,Reviews,Size_in_MB,Type,Price,Content_Rating,Genres,Last_Updated,Android_Ver
     
+    
     # Encoding categorical features
     label_encoder = LabelEncoder()
     df['Category'] = label_encoder.fit_transform(df['Category'])
@@ -50,7 +52,7 @@ def train_model_partition1():
     x_test, x_validate, y_test, y_validate = train_test_split(x_other, y_other, test_size=0.5, random_state=28)
 
     # Initializing the Random Forest Regression model with 10 decision trees
-    model = RandomForestRegressor(n_estimators=20, min_samples_leaf=5, random_state=28)
+    model = tree.DecisionTreeClassifier(criterion = 'entropy',max_depth= 10, min_samples_leaf= 4, min_samples_split=3)
     
     
     # Fitting the Random Forest Regression model to the data
@@ -94,8 +96,7 @@ def train_model_partition2():
     x_test, x_validate, y_test, y_validate = train_test_split(x_other, y_other, test_size=0.5, random_state=28)
 
     # Initializing the Random Forest Regression model with 10 decision trees
-    model = RandomForestRegressor(n_estimators=20, min_samples_split=5, random_state=28)
-    
+    model = tree.DecisionTreeClassifier(criterion = 'entropy',max_depth= 6, min_samples_leaf= 2, min_samples_split=2)    
     # Fitting the Random Forest Regression model to the data
     model.fit(x_train, y_train)
 
@@ -109,6 +110,8 @@ def train_model_partition2():
     
     mlFlowVersioning(model,"model2-partition2")
     return model
+
+
 #modell2_partition2=train_model_partition2()
 
 def train_model_partition3():
@@ -135,7 +138,7 @@ def train_model_partition3():
     x_test, x_validate, y_test, y_validate = train_test_split(x_other, y_other, test_size=0.5, random_state=28)
 
     # Initializing the Random Forest Regression model with 10 decision trees
-    model = RandomForestRegressor(n_estimators=20, min_samples_split=5, random_state=28)
+    model = tree.DecisionTreeClassifier(criterion = 'gini',max_depth=6 , min_samples_leaf=2 , min_samples_split=3)
     
     # Fitting the Random Forest Regression model to the data
     model.fit(x_train, y_train)

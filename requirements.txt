@@ -14,4 +14,5 @@ pandas
 matplotlib
 mlflow
 docker==7.1.0
+xgboost
 dvc
