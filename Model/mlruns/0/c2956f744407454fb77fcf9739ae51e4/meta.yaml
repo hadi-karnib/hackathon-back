@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/JPC/Desktop/project/hackathon-back/Model/mlruns/0/c2956f744407454fb77fcf9739ae51e4/artifacts
+end_time: 1723449660654
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c2956f744407454fb77fcf9739ae51e4
+run_name: peaceful-penguin-518
+run_uuid: c2956f744407454fb77fcf9739ae51e4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1723449657345
+status: 3
+tags: []
+user_id: JPC

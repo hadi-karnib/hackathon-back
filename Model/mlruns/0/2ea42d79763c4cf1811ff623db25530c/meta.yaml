@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/JPC/Desktop/project/hackathon-back/Model/mlruns/0/2ea42d79763c4cf1811ff623db25530c/artifacts
+end_time: 1723449657264
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2ea42d79763c4cf1811ff623db25530c
+run_name: luxuriant-carp-361
+run_uuid: 2ea42d79763c4cf1811ff623db25530c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1723449653911
+status: 3
+tags: []
+user_id: JPC
