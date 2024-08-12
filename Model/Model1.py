@@ -1,22 +1,18 @@
-# Importing the libraries
-from sklearn.ensemble import RandomForestRegressor  # for building the model
-# for calculating the cost function
+from sklearn.preprocessing import LabelEncoder
+from xgboost import XGBClassifier
+from sklearn import tree
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split  # for splitting the data
 import numpy as np  # for array operations
 import pandas as pd  # for working with DataFrames
 import matplotlib.pyplot as plt  # for data visualization
-from sklearn import tree
+import json
+from sklearn.preprocessing import LabelEncoder
 
-from sklearn.preprocessing import LabelEncoder
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder
-from sklearn import tree
-from sklearn.metrics import mean_squared_error
 import numpy as np
 import mlflow
 import mlflow.sklearn
+
 
 
 def mlFlowVersioning(class_tree,model_name):
@@ -48,22 +44,22 @@ def train_model_partition1():
     # Splitting the dataset into testing and validation sets (50/50)
     x_test, x_validate, y_test, y_validate = train_test_split(x_other, y_other, test_size=0.5, random_state=28)
 
-    class_tree = tree.DecisionTreeClassifier(criterion= 'entropy', max_depth= 8, min_samples_leaf= 2, min_samples_split= 2)
-    class_tree.fit(x_train, y_train)
+    xgb_model = XGBClassifier(learning_rate= 0.03, max_depth= 4, n_estimators= 100) 
+    xgb_model.fit(x_train, y_train)
 
-    y_pred = class_tree.predict(x_test)
+    y_pred = xgb_model.predict(x_test)
 
-    score = class_tree.score(x_test, y_test)
+    score = xgb_model.score(x_test, y_test)
     print(score)
 
     rmse = float(format(np.sqrt(mean_squared_error(y_test, y_pred)), '.3f'))
     print("\nRMSE:\n", rmse)
 
     # Start an MLflow run
-    mlFlowVersioning(class_tree,"model1-partition1")
-    return class_tree
+    mlFlowVersioning(xgb_model,"model1-partition1")
+    return xgb_model
 
-#modell1_partition1=train_model_partition1()
+#model1_partition1=train_model_partition1()
 
 def train_model_partition2():
     # load dataset
@@ -85,22 +81,23 @@ def train_model_partition2():
     # Splitting the dataset into testing and validation sets (50/50)
     x_test, x_validate, y_test, y_validate = train_test_split(x_other, y_other, test_size=0.5, random_state=28)
 
-    class_tree = tree.DecisionTreeClassifier(criterion= 'gini', max_depth= 10, min_samples_leaf= 4, min_samples_split= 10)
-    class_tree.fit(x_train, y_train)
+    xgb_model = XGBClassifier(learning_rate= 0.03, max_depth= 4, n_estimators= 100) 
+    xgb_model.fit(x_train, y_train)
 
-    y_pred = class_tree.predict(x_test)
+    y_pred = xgb_model.predict(x_test)
 
-    score = class_tree.score(x_test, y_test)
+    score = xgb_model.score(x_test, y_test)
     print(score)
 
     rmse = float(format(np.sqrt(mean_squared_error(y_test, y_pred)), '.3f'))
     print("\nRMSE:\n", rmse)
+
     # Start an MLflow run
-    mlFlowVersioning(class_tree,"model1-partition2")
+    mlFlowVersioning(xgb_model,"model1-partition2")
+    return xgb_model
 
-    return class_tree
 
-#modell1_partition2=train_model_partition2()
+#model1_partition2=train_model_partition2()
 
 
 def train_model_partition3():
@@ -124,25 +121,24 @@ def train_model_partition3():
     # Splitting the dataset into testing and validation sets (50/50)
     x_test, x_validate, y_test, y_validate = train_test_split(x_other, y_other, test_size=0.5, random_state=28)
 
-    class_tree = tree.DecisionTreeClassifier(criterion='gini', max_depth=10, min_samples_leaf=2, min_samples_split=5)
-    class_tree.fit(x_train, y_train)
+    xgb_model = XGBClassifier(learning_rate= 0.03, max_depth= 4, n_estimators= 120) 
+    xgb_model.fit(x_train, y_train)
 
-    y_pred = class_tree.predict(x_test)
+    y_pred = xgb_model.predict(x_test)
 
-    score = class_tree.score(x_test, y_test)
+    score = xgb_model.score(x_test, y_test)
     print(score)
 
     rmse = float(format(np.sqrt(mean_squared_error(y_test, y_pred)), '.3f'))
     print("\nRMSE:\n", rmse)
 
     # Start an MLflow run
-    mlFlowVersioning(class_tree,"model1-partition3")
-
-    return class_tree
-
+    mlFlowVersioning(xgb_model,"model1-partition3")
+    return xgb_model
 
 
-#modell1_partition3=train_model_partition3()
+
+model1_partition3=train_model_partition3()
 
 
 def predict_rate(model, user_input_json):

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/JPC/Desktop/project/hackathon-back/Model/mlruns/0/7fbc3b4d6f3141f88560fae0de7e9bf6/artifacts
+end_time: 1723452561539
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 7fbc3b4d6f3141f88560fae0de7e9bf6
+run_name: casual-swan-679
+run_uuid: 7fbc3b4d6f3141f88560fae0de7e9bf6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1723452557903
+status: 3
+tags: []
+user_id: JPC
