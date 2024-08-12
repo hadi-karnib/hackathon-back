@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1723449727254
+current_stage: None
+description: null
+last_updated_timestamp: 1723449727254
+name: model2-partition2
+run_id: 5144758810944f929d3e5208d501d56e
+run_link: null
+source: file:///C:/Users/JPC/Desktop/project/hackathon-back/Model/mlruns/0/5144758810944f929d3e5208d501d56e/artifacts/model1
+status: READY
+status_message: null
+storage_location: file:///C:/Users/JPC/Desktop/project/hackathon-back/Model/mlruns/0/5144758810944f929d3e5208d501d56e/artifacts/model1
+user_id: null
+version: 2
