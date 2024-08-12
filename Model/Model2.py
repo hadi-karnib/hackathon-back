@@ -28,7 +28,7 @@ def mlFlowVersioning(model,model_name):
 def train_model_partition1():
     # load dataset
     df = pd.read_csv('../data/first_data.csv') # App,Category,Installs_category,Rating,Mean_App_Sentiment,Reviews,Size_in_MB,Type,Price,Content_Rating,Genres,Last_Updated,Android_Ver
-    df = pd.read_csv('../data/first_data.csv') # App,Category,Installs_category,Rating,Mean_App_Sentiment,Reviews,Size_in_MB,Type,Price,Content_Rating,Genres,Last_Updated,Android_Ver
+    
     
     # Encoding categorical features
     label_encoder = LabelEncoder()
@@ -70,10 +70,8 @@ def train_model_partition1():
 #modell2_partition1=train_model_partition1()
 
 
-
 def train_model_partition2():
     # load dataset
-    df = pd.read_csv('../data/second_data.csv')
     df = pd.read_csv('../data/second_data.csv')
 
     # Encoding categorical features
@@ -116,7 +114,6 @@ def train_model_partition2():
 
 def train_model_partition3():
     # load dataset
-    df = pd.read_csv('../data/finaldataset.csv')
     df = pd.read_csv('../data/finaldataset.csv')
 
     # Encoding categorical features
