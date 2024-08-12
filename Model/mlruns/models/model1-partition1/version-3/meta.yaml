@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1723399190549
+current_stage: None
+description: null
+last_updated_timestamp: 1723399190549
+name: model1-partition1
+run_id: 9f3a1fd0e23444e19b9b4a6087876a63
+run_link: null
+source: file:///C:/Users/Majd/Desktop/FSW29_30_VS/hackathon_2/hackathon-back/Model/mlruns/0/9f3a1fd0e23444e19b9b4a6087876a63/artifacts/model1
+status: READY
+status_message: null
+storage_location: file:///C:/Users/Majd/Desktop/FSW29_30_VS/hackathon_2/hackathon-back/Model/mlruns/0/9f3a1fd0e23444e19b9b4a6087876a63/artifacts/model1
+user_id: null
+version: 3

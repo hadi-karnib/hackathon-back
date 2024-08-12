@@ -1,4 +1,5 @@
 aliases: []
+<<<<<<< HEAD
 creation_timestamp: 1723449660639
 current_stage: None
 description: null
@@ -10,5 +11,18 @@ source: file:///C:/Users/JPC/Desktop/project/hackathon-back/Model/mlruns/0/c2956
 status: READY
 status_message: null
 storage_location: file:///C:/Users/JPC/Desktop/project/hackathon-back/Model/mlruns/0/c2956f744407454fb77fcf9739ae51e4/artifacts/model1
+=======
+creation_timestamp: 1723406195639
+current_stage: None
+description: null
+last_updated_timestamp: 1723406195639
+name: model2-partition3
+run_id: dca05c9cf50a49f3b1e11d8c595d0daa
+run_link: null
+source: file:///C:/Users/Majd/Desktop/FSW29_30_VS/hackathon_2/hackathon-back/Model/mlruns/0/dca05c9cf50a49f3b1e11d8c595d0daa/artifacts/model1
+status: READY
+status_message: null
+storage_location: file:///C:/Users/Majd/Desktop/FSW29_30_VS/hackathon_2/hackathon-back/Model/mlruns/0/dca05c9cf50a49f3b1e11d8c595d0daa/artifacts/model1
+>>>>>>> 9dc5068adbf94760f200f042371e2750b440d174
 user_id: null
 version: 1
